@@ -12,6 +12,7 @@ body {
 
 .memory_game_board {
     display: flex;
+    flex-wrap: wrap;
     border: 2px solid white;
     width: 1100px;
     height: 650px;
@@ -19,6 +20,8 @@ body {
 
 .game_pieces {
     border: 2px solid blue;
+    width: 25%;
+    height: 33.333%;
 }
 
 .bottom_card, .top_card {
