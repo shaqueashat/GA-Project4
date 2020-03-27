@@ -18,7 +18,7 @@ if (!userFlipsCard) {
         userFlipsCard = false;
         secondCard = this;
         
-        
+       
     }
 }
 
