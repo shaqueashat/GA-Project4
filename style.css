@@ -18,6 +18,7 @@ body {
     flex-wrap: wrap;
     margin: auto;
     border: 1px solid black;
+    perspective: 1000px;
     
 }
 
@@ -28,12 +29,17 @@ body {
     height: 25%;
     margin: auto;
     transform: scale(1);
-    
+    transform-style: preserve-3d;
+    transition: transform .5s;
 }
 
 .game_pieces:active {
     transform: scale(.97);
     transition: transform .2s;
+}
+
+.game_pieces.flip{
+    transform:rotateY(180deg);
 }
 
 .bottom_card, .top_card {
@@ -43,4 +49,9 @@ body {
     position: absolute;
     padding: 1px;
     border-radius: 5px;
+    backface-visibility: hidden;
+}
+
+.bottom_card {
+    transform: rotateY(180deg);
 }
