@@ -22,19 +22,33 @@ body {
     
 }
 
+button {
+   
+    background-color: red;
+    border: none;
+    color: black;
+    padding: 5px 5px;
+    text-align: top;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+  }
+
+
 .game_pieces {
     border: 2px solid red;
     position: relative;
     width: 15%;
     height: 25%;
     margin: auto;
+    object-fit: fill;
     transform: scale(1);
     transform-style: preserve-3d;
     transition: transform .5s;
 }
 
 .game_pieces:active {
-    transform: scale(.97);
+    /* transform: scale(.97); */
     transition: transform .2s;
 }
 

@@ -63,5 +63,10 @@ function resetBoard() {
     });
 })();
 
+function refreshPage() 
+{
+    location.reload();
+}
+
 pieces.forEach(piece => piece.addEventListener('click', flipOver));
     
