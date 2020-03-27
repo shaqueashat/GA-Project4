@@ -4,24 +4,34 @@ let userFlipsCard = false;
 let firstCard, secondCard;
 
 function flipOver() {
-    this.classList.toggle('flip');
+   this.classList.add('flip');
 
 
 if (!userFlipsCard) {
-    //first time the user clicks the card
-    userFlipsCard = true;
-    firstCard = this;
+    
+   userFlipsCard = true;
+   firstCard = this;
 
    
-    } else {
-        //second time the user clickes the card
-        userFlipsCard = false;
-        secondCard = this;
+   } else {
         
-       
-    }
+       userFlipsCard = false;
+       secondCard = this;
+        
+       if (firstCard.dataset.image === 
+           secondCard.dataset.image) {
+            
+           firstCard.removeEventListener('click', flipOver);
+           secondCard.removeEventListener('click', flipOver);
+       } else {
+            
+           setTimeout(() => {
+           firstCard.classList.remove('flip');
+           secondCard.classList.remove('flip');
+       }, 2000); 
+      }
+   }
 }
 
 pieces.forEach(piece => piece.addEventListener('click', flipOver));
-
-
+    
