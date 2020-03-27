@@ -1,36 +1,51 @@
 let pieces = document.querySelectorAll('.game_pieces');
-
+let lockBoard = false;
 let userFlipsCard = false;
 let firstCard, secondCard;
 
 function flipOver() {
-   this.classList.add('flip');
+    if (lockBoard) return;
+
+        this.classList.add('flip');
 
 
-if (!userFlipsCard) {
+    if (!userFlipsCard) {
     
-   userFlipsCard = true;
-   firstCard = this;
+        userFlipsCard = true;
+        firstCard = this;
 
    
    } else {
         
        userFlipsCard = false;
        secondCard = this;
-        
+       
+       checkForMatch(); 
+   }
+}
+function checkForMatch() {
        if (firstCard.dataset.image === 
            secondCard.dataset.image) {
-            
-           firstCard.removeEventListener('click', flipOver);
-           secondCard.removeEventListener('click', flipOver);
+            disableCards();
        } else {
-            
-           setTimeout(() => {
-           firstCard.classList.remove('flip');
-           secondCard.classList.remove('flip');
-       }, 2000); 
+            unflipCards();
       }
-   }
+    }
+
+    function disableCards() {
+      firstCard.removeEventListener('click', flipOver);
+      secondCard.removeEventListener('click', flipOver);
+    }
+    
+    function unflipCards() {
+        lockBoard = true; 
+
+      setTimeout(() => {
+        firstCard.classList.remove('flip');
+        secondCard.classList.remove('flip');
+
+        lockBoard = false;
+    }, 2000); 
 }
 
 pieces.forEach(piece => piece.addEventListener('click', flipOver));
